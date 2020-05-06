@@ -13,11 +13,11 @@ This program:
   
 
 
-    Valid staff details are :
+   Valid staff details are :
     
-       for staff1:
-           username: akinsola,
-           password: pass1
-       for staff2:
-            username: ademola,
-            password: pass2   
+   - staff1:
+       - username: akinsola,
+       - password: pass1
+   - staff2:
+        - username: ademola,
+        - password: pass2   
