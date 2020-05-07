@@ -3,7 +3,7 @@ import os
 import random
 def bank():
     def check_input(*args):
-        #pass the values user must to this function
+        #pass the values user must match to this function
         valid = False
         while not valid:
             user_choice = str(input('>')).lower()
@@ -38,6 +38,9 @@ def bank():
                         for user in user_data:
                             if user['username'] == username and user['password'] == password:
                                 logged_in = True
+                                break
+                        else:
+                            print('Please enter valid credentials.')
         if logged_in:
             if not os.path.exists('session.txt'): 
                 with open('session.txt','w+') as file:                     
@@ -62,7 +65,8 @@ def bank():
                         except ValueError:
                             continue
                     acc_type = str(input('Account Type: '))
-                    acc_num = "".join(str(random.randint(0,9)) for i in range(10))
+                    acc_num = "".join(str(random.randint(0, 9)) for i in range(10))
+                    acc_email = str(input('Account Email: '))
 
                     with open('customer.txt') as file:
                         try:
@@ -73,7 +77,8 @@ def bank():
                             'acc_num':acc_num,
                             'acc_name': acc_name,
                             'acc_balance': acc_balance,
-                            'acc_type': acc_type
+                            'acc_type': acc_type,
+                            'acc_email': acc_email
                             })
                     with open('customer.txt', 'w') as file:
                         json.dump(customer_details, file)
@@ -89,6 +94,7 @@ def bank():
                                 print("Account number: ", customer_detail['acc_num'])
                                 print("Balance: ", customer_detail['acc_balance'])
                                 print("Account Type: ", customer_detail['acc_type'])
+                                print("Account Email: ", customer_detail['acc_email'])
                                 found = True
                         if not found:
                             print('Sorry could\'nt find a user with that account number')
@@ -98,5 +104,6 @@ def bank():
                     is_finished = True
             main()
     main()
+
 
 bank()
