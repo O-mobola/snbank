@@ -31,7 +31,7 @@ def bank():
             login_choice = check_input('login', 'end')
             if login_choice == 'login':
                 while not logged_in:
-                    username = str(input('username: ')).lower()
+                    username = str(input('username: '))
                     password = str(input('password: '))
                     with open('staff.txt') as file:
                         user_data = json.load(file)
